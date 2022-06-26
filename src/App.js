@@ -1,57 +1,48 @@
-import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
 import "./App.css";
+import React from "react";
+import { useSelector } from "react-redux";
+
+import TaskCard from "./components/TaskCard";
+
+// import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 
 function App() {
+  const { tasks } = useSelector((state) => state);
+
+  // const darkTheme = createTheme({
+  //   palette: {
+  //     mode: "dark",
+  //     primary: {
+  //       main: "#29b6f6",
+  //       dark: "#0f49ad",
+  //     },
+  //     secondary: {
+  //       main: "#D93A8A",
+  //     },
+  //     success: {
+  //       main: "#388e3c",
+  //     },
+  //     info: {
+  //       main: "#f5b342",
+  //     },
+  //   },
+  // });
+
   return (
+    // <ThemeProvider theme={darkTheme}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <div className="page-header">Routine Pipette Check and Calibration</div>
+      <Button variant="contained" color="secondary">
+        More Info
+      </Button>
+      <div className="container">
+        {tasks.map((task, idx) => (
+          <TaskCard key={idx} task={task} index={idx} />
+        ))}
+      </div>
     </div>
+    // </ThemeProvider>
   );
 }
 
