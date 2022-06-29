@@ -1,0 +1,9 @@
+.info-list {
+  width: 90%;
+}
+
+@media (min-width: 768px) {
+  .info-list {
+    width: 75%;
+  }
+}

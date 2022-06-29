@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateTask } from "../../features/taskTracker/tasksSlice";
 
 import EditIcon from "@mui/icons-material/Edit";
 
@@ -24,11 +26,23 @@ const style = {
   p: 4,
 };
 
-const TextCardModal = ({ task }) => {
+const TextCardModal = ({ task, index }) => {
+  const dispatch = useDispatch();
   const { title, subSteps } = task;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    dispatch(
+      updateTask({
+        index,
+        id,
+        value,
+      })
+    );
+  };
 
   return (
     <div>
@@ -54,7 +68,12 @@ const TextCardModal = ({ task }) => {
               >
                 Title
               </InputLabel>
-              <Input id="title" aria-describedby="title-field" value={title} />
+              <Input
+                id="title"
+                aria-describedby="title-field"
+                value={title}
+                onChange={handleChange}
+              />
             </FormControl>
             <List>
               {subSteps.map((step, stepIdx) => (
@@ -65,14 +84,15 @@ const TextCardModal = ({ task }) => {
                   <InputLabel
                     sx={{ fontWeight: "900", marginTop: "8px" }}
                     shrink
-                    htmlFor={step.name}
+                    htmlFor={`${stepIdx}`}
                   >
                     {`Step ${stepIdx + 1}`}
                   </InputLabel>
                   <Input
-                    id={step.name}
+                    id={`${stepIdx}`}
                     aria-describedby="title-field"
                     value={step.name}
+                    onChange={handleChange}
                   />
                 </FormControl>
               ))}
@@ -85,13 +105,6 @@ const TextCardModal = ({ task }) => {
                 justifyContent: "space-around",
               }}
             >
-              <Button
-                onClick={() => console.log("clicked")}
-                variant="contained"
-                color="success"
-              >
-                Update Task
-              </Button>
               <Button
                 onClick={handleClose}
                 sx={{ margin: "0" }}

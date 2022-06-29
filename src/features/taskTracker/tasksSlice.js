@@ -74,11 +74,13 @@ export const tasks = createSlice({
   initialState: initialState.tasks,
   reducers: {
     updateTask: (state, action) => {
-      const existingTask = state.filter(
-        (a) => a.title === action.payload.title
-      );
-      const { title, subSteps } = action.payload;
-      console.log(existingTask, title, subSteps);
+      const { index, id, value } = action.payload;
+      const step = isNaN(parseInt(id)) ? "title" : parseInt(id);
+      if (step === "title") {
+        state[index].title = value;
+      } else {
+        state[index].subSteps[step].name = value;
+      }
     },
     markTaskAsDone: (state, action) => {
       const { index, subStepIdx } = action.payload;

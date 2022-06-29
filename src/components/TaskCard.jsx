@@ -42,7 +42,7 @@ const TaskCard = ({ task, index }) => {
       variant="outlined"
     >
       <CardContent sx={{ margin: "auto" }}>
-        <TextCardModal task={task} />
+        <TextCardModal task={task} index={index} />
         <Typography variant="h5" sx={{ maxWidth: "90%" }}>
           6.{index + 1} <span style={{ fontWeight: "900" }}>{title}</span>
         </Typography>
