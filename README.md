@@ -1,6 +1,13 @@
 # Labflow - by Jack Mayer
 This project took about 7 hours to complete.
 
+
+## Getting Started
+`git clone`
+
+`npm i`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
