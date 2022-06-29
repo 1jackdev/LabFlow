@@ -22,8 +22,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 Launches the test runner in the interactive watch mode.
 
 Tests currently cover:
-App.js - app starts
-tasksSlice.js - the store can be edited
+
+- App.js - app starts
+
+- tasksSlice.js - the store can be edited
 
 
 
