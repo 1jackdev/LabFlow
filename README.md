@@ -36,7 +36,7 @@ Labflow uses a predefined SOP (standard operating procedure) which is defined in
 - It displays the procedural tasks in a top-down flow. Tasks can have type "text" or "graph". Text tasks can be edited and can be marked as done.
 - The app is usable for all device sizes.
 - Redux is used to handle state, as it has an easy-to-use toolkit.
-- Material UI is used for styling. I like simple look of Material UI and like the style-overwrite syntax.
+- Material UI is used for styling. I like the simple look of Material UI as well as the style-overwrite syntax.
 
 
 
